@@ -6,6 +6,6 @@
     "timeStamp": "2023-02-28T23:50:36.449Z",
     "userMetadata": {},
     "modelName": "tm-my-image-model",
-    "labels": ["Phone", "Mouse", "Surface Pen"],
+    "labels": ["Phone", "Mouse", "Pen"],
     "imageSize": 224
 }
