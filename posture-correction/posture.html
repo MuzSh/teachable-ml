@@ -88,15 +88,16 @@
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
 
-                // plays audio when good posture
-                if (prediction[0].probability.toFixed(2)>=0.80){
-                    playGood();
-                }
-                else{
-                    pauseGood();
-                }
+                // uncomment to be annoyed af
+                // // plays audio when good posture
+                // if (prediction[0].probability.toFixed(2)>=0.80){
+                //     playGood();
+                // }
+                // else{
+                //     pauseGood();
+                // }
                 
-                // plays audio mouse clicks
+                // plays when bad posture
                 if (prediction[1].probability.toFixed(2)>=0.80){
                     playBad();
                 }
