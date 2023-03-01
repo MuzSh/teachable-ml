@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    <audio id="goodPosture" src="./effects/check.mp3"></audio>
+    <audio id="badPosture" src="./effects/buzz.wav"></audio>
     <div>Teachable Machine Pose Model</div>
     <button type="button" onclick="init()">Start</button>
     <div><canvas id="canvas"></canvas></div>
@@ -14,6 +16,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script type="text/javascript">
+
+        // play audio based on current posture correction
+        var goodPosture = document.getElementById("goodPosture");
+        function playGood(){
+            goodPosture.play();
+        }
+        function pauseGood(){
+            goodPosture.pause();
+        }
+
+        var badPosture = document.getElementById("badPosture");
+        function playBad(){
+            badPosture.play();
+        }
+        function pauseBad(){
+            badPosture.pause();
+        }
+
         // More API functions here:
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
@@ -68,6 +88,21 @@
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
 
+                // plays audio when good posture
+                if (prediction[0].probability.toFixed(2)>=0.80){
+                    playGood();
+                }
+                else{
+                    pauseGood();
+                }
+                
+                // plays audio mouse clicks
+                if (prediction[1].probability.toFixed(2)>=0.80){
+                    playBad();
+                }
+                else{
+                    pauseBad();
+                }
             // finally draw the poses
             drawPose(pose);
         }
